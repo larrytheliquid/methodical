@@ -1,0 +1,6 @@
+= Bracketize
+
+Ever wanted Ruby to have mandator parentheses for method calls...
+and have those method calls actually use brackets instead of parantheses? Probably not, but here's how to do it.
+
+Call w/o brackets and get back a "pointer" to the method that you can still call, just like Python!
