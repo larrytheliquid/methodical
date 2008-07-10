@@ -11,21 +11,21 @@ module Bracketize
   end
 end
 
-describe Bracketize, "#bracketize" do
-  class Klass
-    extend Bracketize
-    
-    def method_with_multiple_parameters(a, b)
-      a + b
-    end
-    bracketize(:method_with_multiple_parameters)    
-    
-    def method_with_one_parameter(a)
-      a + 1
-    end
-    bracketize(:method_with_one_parameter)
-  end
+class Klass
+  extend Bracketize
   
+  def method_with_multiple_parameters(a, b)
+    a + b
+  end
+  bracketize(:method_with_multiple_parameters)    
+  
+  def method_with_one_parameter(a)
+    a + 1
+  end
+  bracketize(:method_with_one_parameter)
+end
+
+describe Bracketize, "#bracketize" do    
   before(:each) do
     @klass = Klass.new
   end
