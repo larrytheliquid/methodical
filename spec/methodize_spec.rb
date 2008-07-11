@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 require File.join(File.dirname(__FILE__), 'fixtures', 'class_with_instance_methods')
 
-describe Bracketize, "#bracketize" do
+describe Methodical, "#methodize" do
   before(:each) do
     @instance = InstanceMethods.new
   end
