@@ -8,6 +8,8 @@ describe Bracketize, "#class_bracketize" do
   
   describe "with a single parameter" do
     describe "with no parameters" do            
+      it "should work with 'new' method"
+      
       it "should return a 'pointer' object without brackets that can be evaluated with brackets" do
         method_with_no_parameters = @class.method_with_no_parameters
         method_with_no_parameters[].should == 23

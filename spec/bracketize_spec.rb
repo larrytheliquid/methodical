@@ -17,6 +17,10 @@ describe Bracketize, "#bracketize" do
         @instance.method_with_no_parameters[].should == 23
       end
     end
+    
+    it "for predicate methods"
+    
+    it "for bang methods"
 
     describe "with one parameter" do            
       it "should return a 'pointer' object without brackets that can be evaluated with brackets" do
