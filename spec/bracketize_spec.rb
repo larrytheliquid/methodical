@@ -1,49 +1,5 @@
-module Bracketize
-  def bracketize(method_name)      
-    method = instance_method(method_name).bind(self.new)
-    define_method(method_name) do       
-      o = Object.new
-      (class << o; self; end).send(:define_method, :[]) do |*arguments|
-        method.call(*arguments)
-      end
-      o
-    end
-  end
-end
-
-class Klass
-  extend Bracketize  
-  @@class_variable = 7300 
-  
-  def initialize(instance_variable = 0)
-    @instance_variable = instance_variable
-  end
-  
-  def method_with_no_parameters
-    23
-  end
-  bracketize(:method_with_no_parameters)
-  
-  def method_with_one_parameter(a)
-    a + 1
-  end
-  bracketize(:method_with_one_parameter)
-  
-  def method_with_multiple_parameters(a, b)
-    a + b
-  end
-  bracketize(:method_with_multiple_parameters)
-  
-  def method_with_instance_variable
-    7 + @instance_variable
-  end
-  bracketize(:method_with_instance_variable)
-  
-  def method_with_class_variable
-    31 + @@class_variable
-  end
-  bracketize(:method_with_class_variable)
-end
+require File.join(File.dirname(__FILE__), 'spec_helper')
+require File.join(File.dirname(__FILE__), 'fixtures', 'klass')
 
 describe Bracketize, "#bracketize" do    
   before(:each) do
