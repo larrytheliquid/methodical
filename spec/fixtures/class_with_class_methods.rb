@@ -26,7 +26,7 @@ class ClassMethods
     31 + @@class_variable
   end
   
-  extend Methodical  
+  include Methodical  
   class_methodize(:method_with_no_parameters)  
   class_methodize(:method_with_one_parameter)  
   class_methodize(:method_with_block_parameter)  

@@ -25,7 +25,7 @@ class InstanceMethods < Array
     31 + @@class_variable
   end
   
-  extend Methodical  
+  include Methodical  
   methodize(:map)  
   methodize(:method_with_no_parameters)
   methodize(:method_with_one_parameter)  
