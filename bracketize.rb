@@ -12,7 +12,8 @@ module Bracketize
 end
 
 class Klass
-  extend Bracketize
+  extend Bracketize  
+  @@class_variable = 7300 
   
   def initialize(instance_variable = 0)
     @instance_variable = instance_variable
@@ -37,6 +38,11 @@ class Klass
     7 + @instance_variable
   end
   bracketize(:method_with_instance_variable)
+  
+  def method_with_class_variable
+    31 + @@class_variable
+  end
+  bracketize(:method_with_class_variable)
 end
 
 describe Bracketize, "#bracketize" do    
@@ -92,6 +98,17 @@ describe Bracketize, "#bracketize" do
       it "should evaluate with brackets" do
         pending
         @klass.method_with_instance_variable[].should == 1337
+      end
+    end
+    
+    describe "with a class variable" do      
+      it "should return a 'pointer' object without brackets that can be evaluated with brackets" do
+        method_with_class_variable = @klass.method_with_class_variable
+        method_with_class_variable[].should == 7331
+      end
+
+      it "should evaluate with brackets" do
+        @klass.method_with_class_variable[].should == 7331
       end
     end
   end
