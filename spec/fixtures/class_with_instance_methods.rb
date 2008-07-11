@@ -1,22 +1,17 @@
 class InstanceMethods < Array
-  extend Methodical  
   @@class_variable = 7300 
   
   def initialize(instance_variable = 0)
     @instance_variable = instance_variable
   end
   
-  methodize(:map)
-  
   def method_with_no_parameters
     23
   end
-  methodize(:method_with_no_parameters)
   
   def method_with_one_parameter(a)
     a + 1
   end
-  methodize(:method_with_one_parameter)
   
   def method_with_multiple_parameters(a, b)
     a + b
@@ -30,5 +25,9 @@ class InstanceMethods < Array
     31 + @@class_variable
   end
   
-  methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable)
+  extend Methodical  
+  methodize(:map)  
+  methodize(:method_with_no_parameters)
+  methodize(:method_with_one_parameter)  
+  methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable)  
 end
