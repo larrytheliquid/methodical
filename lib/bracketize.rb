@@ -9,4 +9,11 @@ module Bracketize
       }
     end
   end
+  
+  def class_bracketize(*method_names)
+    (class << self; self; end).bracketize(*method_names)
+  rescue NoMethodError    
+    class << self; self.extend(Bracketize); end
+    retry
+  end
 end
