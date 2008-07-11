@@ -1,5 +1,5 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
-require File.join(File.dirname(__FILE__), 'fixtures', 'class_with_auto_bracketize')
+require File.join(File.dirname(__FILE__), 'fixtures', 'class_with_auto_class_bracketize')
 
 describe Bracketize, "#auto_class_bracketize!" do
   before(:each) do

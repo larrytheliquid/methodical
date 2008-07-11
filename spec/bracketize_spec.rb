@@ -28,6 +28,21 @@ describe Bracketize, "#bracketize" do
         @instance.method_with_one_parameter[4].should == 5
       end
     end
+    
+    describe "with a block parameter" do
+      before(:each) do
+        @instance << 5
+      end
+      
+      it "should return a 'pointer' object without brackets that can be evaluated with brackets" do
+        method_with_block_parameter = @instance.map
+        method_with_block_parameter.[] {|x| x.to_s }.should == ["5"]
+      end
+
+      it "should evaluate with brackets" do
+        @instance.map.[] {|x| x.to_s }.should == ["5"]
+      end
+    end
   end
   
   describe "with multiple parameters" do

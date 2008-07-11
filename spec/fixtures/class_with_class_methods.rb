@@ -13,6 +13,11 @@ class ClassMethods
   end
   class_bracketize(:method_with_one_parameter)
   
+  def self.method_with_block_parameter
+    yield(4) 
+  end
+  class_bracketize(:method_with_block_parameter)
+  
   def self.method_with_multiple_parameters(a, b)
     a + b
   end

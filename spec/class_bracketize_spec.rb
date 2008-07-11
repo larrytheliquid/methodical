@@ -28,6 +28,17 @@ describe Bracketize, "#class_bracketize" do
         @class.method_with_one_parameter[4].should == 5
       end
     end
+    
+    describe "with a block parameter" do
+      it "should return a 'pointer' object without brackets that can be evaluated with brackets" do
+        method_with_block_parameter = @class.method_with_block_parameter
+        method_with_block_parameter.[] {|x| x + 3 }.should == 7
+      end
+
+      it "should evaluate with brackets" do
+        @class.method_with_block_parameter.[] {|x| x + 3 }.should == 7
+      end
+    end
   end
   
   describe "with multiple parameters" do

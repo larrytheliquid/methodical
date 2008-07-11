@@ -1,10 +1,12 @@
-class InstanceMethods
+class InstanceMethods < Array
   extend Bracketize  
   @@class_variable = 7300 
   
   def initialize(instance_variable = 0)
     @instance_variable = instance_variable
   end
+  
+  bracketize(:map)
   
   def method_with_no_parameters
     23
