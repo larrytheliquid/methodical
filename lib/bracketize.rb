@@ -1,6 +1,6 @@
 module Bracketize
   def bracketize(*method_names)
-    method_names.each do |method_name|
+    for method_name in method_names
       class_eval %{
         alias #{method_name}_without_bracketize #{method_name}
         def #{method_name}
