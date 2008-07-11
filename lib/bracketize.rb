@@ -16,4 +16,24 @@ module Bracketize
     class << self; self.extend(Bracketize); end
     retry
   end
+  
+  def auto_bracketize!
+    def method_added(method_name)
+      unless @adding
+        @adding = true
+        bracketize(method_name)
+        @adding = false
+      end
+    end
+  end
+  
+  def auto_class_bracketize!
+    def singleton_method_added(method_name)
+      unless @adding
+        @adding = true
+        class_bracketize(method_name)
+        @adding = false
+      end
+    end
+  end
 end

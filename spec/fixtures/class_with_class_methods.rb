@@ -1,5 +1,5 @@
 class ClassMethods
-  extend Bracketize  
+  extend Bracketize
   @@class_variable = 7300 
   @instance_variable  = 1330
   
