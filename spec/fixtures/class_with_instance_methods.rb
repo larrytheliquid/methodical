@@ -1,4 +1,4 @@
-class Klass
+class InstanceMethods
   extend Bracketize  
   @@class_variable = 7300 
   
@@ -19,15 +19,14 @@ class Klass
   def method_with_multiple_parameters(a, b)
     a + b
   end
-  bracketize(:method_with_multiple_parameters)
   
   def method_with_instance_variable
     7 + @instance_variable
   end
-  bracketize(:method_with_instance_variable)
   
   def method_with_class_variable
     31 + @@class_variable
   end
-  bracketize(:method_with_class_variable)
+  
+  bracketize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable)
 end

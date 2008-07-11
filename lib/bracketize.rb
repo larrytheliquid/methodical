@@ -1,12 +1,12 @@
 module Bracketize
-  def bracketize(method_name)      
-    method = instance_method(method_name).bind(self.new)
-    define_method(method_name) do       
-      o = Object.new
-      (class << o; self; end).send(:define_method, :[]) do |*arguments|
-        method.call(*arguments)
+  def bracketize(*method_names)
+    method_names.each do |method_name|
+      class_eval do
+        alias_method(:"#{method_name}_without_bracketize", method_name)
+        define_method(method_name) do
+          method(:"#{method_name}_without_bracketize")
+        end
       end
-      o
     end
   end
 end
