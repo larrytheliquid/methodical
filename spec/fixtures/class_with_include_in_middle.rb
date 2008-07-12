@@ -1,4 +1,4 @@
-class ClassWithIncludeInMiddle    
+class ClassWithIncludeInMiddle        
   def self.previously_defined_class_method
     'previously_defined_class_method'
   end
@@ -8,8 +8,6 @@ class ClassWithIncludeInMiddle
   end
   
   include Methodical
-  auto_class_methodize!
-  auto_methodize!
   
   def self.later_defined_class_method
     'later_defined_class_method'
