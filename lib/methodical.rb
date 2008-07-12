@@ -8,9 +8,9 @@ module Methodical
       @_methodical_adding_methods = true
       for method_name in method_names
         class_eval %{
-          alias_method '_methodical_#{method_name}', '#{method_name}'
+          alias_method 'methodical:#{method_name}', '#{method_name}'
           def #{method_name}
-            method('_methodical_#{method_name}')
+            method('methodical:#{method_name}')
           end
         }
       end
