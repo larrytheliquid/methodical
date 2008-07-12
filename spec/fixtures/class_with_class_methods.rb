@@ -6,7 +6,7 @@ class ClassMethods
     23
   end
   
-  def self.method_with_one_parameter(a)
+  def self.method_with_single_parameter(a)
     a + 1
   end
   
@@ -28,7 +28,7 @@ class ClassMethods
   
   include Methodical  
   class_methodize(:method_with_no_parameters)  
-  class_methodize(:method_with_one_parameter)  
+  class_methodize(:method_with_single_parameter)  
   class_methodize(:method_with_block_parameter)  
   class_methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable)
 end

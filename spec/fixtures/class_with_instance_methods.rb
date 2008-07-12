@@ -9,7 +9,7 @@ class InstanceMethods < Array
     23
   end
   
-  def method_with_one_parameter(a)
+  def method_with_single_parameter(a)
     a + 1
   end
   
@@ -28,6 +28,6 @@ class InstanceMethods < Array
   include Methodical  
   methodize(:map)  
   methodize(:method_with_no_parameters)
-  methodize(:method_with_one_parameter)  
+  methodize(:method_with_single_parameter)  
   methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable)  
 end

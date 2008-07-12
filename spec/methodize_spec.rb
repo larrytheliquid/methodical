@@ -6,29 +6,13 @@ describe Methodical, "#methodize" do
     @instance = InstanceMethods.new
   end
   
-  describe "with a single parameter" do
-    describe "with no parameters" do            
-      it "should return a method object" do
-        @instance.method_with_no_parameters.should be_kind_of(Method)
-      end
-
-      it "should evaluate with brackets" do
-        @instance.method_with_no_parameters[].should == 23
-      end
+  describe "with no parameters" do            
+    it "should return a method object" do
+      @instance.method_with_no_parameters.should be_kind_of(Method)
     end
-    
-    it "for predicate methods"
-    
-    it "for bang methods"
 
-    describe "with one parameter" do            
-      it "should return a method object" do
-        @instance.method_with_one_parameter.should be_kind_of(Method)
-      end
-
-      it "should evaluate with brackets" do
-        @instance.method_with_one_parameter[4].should == 5
-      end
+    it "should evaluate with brackets" do
+      @instance.method_with_no_parameters[].should == 23
     end
     
     describe "with a block parameter" do
@@ -44,17 +28,29 @@ describe Methodical, "#methodize" do
         @instance.map.[] {|x| x.to_s }.should == ["5"]
       end
     end
+    
+    it "for predicate methods"
+
+    it "for bang methods"
+  end
+  
+  describe "with a single parameter" do
+    it "should return a method object" do
+      @instance.method_with_single_parameter.should be_kind_of(Method)
+    end
+
+    it "should evaluate with brackets" do
+      @instance.method_with_single_parameter[4].should == 5
+    end
   end
   
   describe "with multiple parameters" do
-    describe "with multiple parameters" do
-      it "should return a method object" do
-        @instance.method_with_multiple_parameters.should be_kind_of(Method)
-      end
+    it "should return a method object" do
+      @instance.method_with_multiple_parameters.should be_kind_of(Method)
+    end
 
-      it "should evaluate with brackets" do
-        @instance.method_with_multiple_parameters[4, 7].should == 11
-      end
+    it "should evaluate with brackets" do
+      @instance.method_with_multiple_parameters[4, 7].should == 11
     end
 
     describe "with an instance variable" do
