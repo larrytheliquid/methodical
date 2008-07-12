@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 require File.join(File.dirname(__FILE__), 'fixtures', 'class_with_class_methods')
 
-describe Methodical, "#class_methodize" do
+describe Methodical, "#class_methodize, for class methods" do
   before(:each) do
     @class = ClassMethods
   end
@@ -28,7 +28,37 @@ describe Methodical, "#class_methodize" do
       it "should evaluate with brackets" do
         @class.method_with_block_parameter.[] {|x| x + 3 }.should == 7
       end
-    end    
+    end
+    
+    describe "that end in ?" do
+      it "should return a method object" do
+        @class.predicate_method?.should be_kind_of(Method)
+      end
+
+      it "should evaluate with brackets" do
+        @class.predicate_method?[].should == true
+      end
+    end
+
+    describe "that end in !" do
+      it "should return a method object" do
+        @class.bang_method!.should be_kind_of(Method)
+      end
+
+      it "should evaluate with brackets" do
+        @class.bang_method![].should == "pow!"
+      end
+    end
+    
+    describe "that have optional spaces like ==" do
+      it "should return a method object" do
+        @class.==().should be_kind_of(Method)
+      end
+    
+      it "should evaluate with brackets" do
+        @class.==()['something_else'].should == false
+      end
+    end
   end
   
   describe "with a single parameter" do            

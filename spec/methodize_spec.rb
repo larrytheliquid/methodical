@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 require File.join(File.dirname(__FILE__), 'fixtures', 'class_with_instance_methods')
 
-describe Methodical, "#methodize" do
+describe Methodical, "#methodize, for instance methods" do
   before(:each) do
     @instance = InstanceMethods.new
   end
@@ -29,9 +29,35 @@ describe Methodical, "#methodize" do
       end
     end
     
-    it "for predicate methods"
+    describe "that end in ?" do
+      it "should return a method object" do
+        @instance.predicate_method?.should be_kind_of(Method)
+      end
 
-    it "for bang methods"
+      it "should evaluate with brackets" do
+        @instance.predicate_method?[].should == true
+      end
+    end
+
+    describe "that end in !" do
+      it "should return a method object" do
+        @instance.bang_method!.should be_kind_of(Method)
+      end
+
+      it "should evaluate with brackets" do
+        @instance.bang_method![].should == "pow!"
+      end
+    end
+    
+    describe "that have optional spaces like ==" do
+      it "should return a method object" do
+        @instance.==().should be_kind_of(Method)
+      end
+    
+      it "should evaluate with brackets" do
+        @instance.==()['something_else'].should == false
+      end
+    end
   end
   
   describe "with a single parameter" do

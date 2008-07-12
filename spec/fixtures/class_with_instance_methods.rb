@@ -25,9 +25,21 @@ class InstanceMethods < Array
     31 + @@class_variable
   end
   
+  def predicate_method?
+    true
+  end
+  
+  def bang_method!
+    "pow!"
+  end
+  
+  def ==(other)
+    false
+  end
+  
   include Methodical  
   methodize(:map)  
   methodize(:method_with_no_parameters)
   methodize(:method_with_single_parameter)  
-  methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable)  
+  methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable, :predicate_method?, :bang_method!, :==)
 end

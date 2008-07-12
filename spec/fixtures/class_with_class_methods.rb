@@ -26,9 +26,21 @@ class ClassMethods
     31 + @@class_variable
   end
   
+  def self.predicate_method?
+    true
+  end
+  
+  def self.bang_method!
+    "pow!"
+  end
+  
+  def self.==(other)
+    false
+  end
+  
   include Methodical  
   class_methodize(:method_with_no_parameters)  
   class_methodize(:method_with_single_parameter)  
   class_methodize(:method_with_block_parameter)  
-  class_methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable)
+  class_methodize(:method_with_multiple_parameters, :method_with_instance_variable, :method_with_class_variable, :predicate_method?, :bang_method!, :==)
 end
