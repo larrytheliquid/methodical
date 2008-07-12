@@ -9,6 +9,10 @@ class ClassWithIncludeInMiddle
   
   include Methodical
   
+  def initialize
+    @initialize_called = true
+  end
+  
   def self.later_defined_class_method
     'later_defined_class_method'
   end

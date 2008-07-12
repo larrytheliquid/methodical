@@ -18,6 +18,10 @@ describe Methodical, ".included" do
         @instance.later_defined_instance_method[].should == 'later_defined_instance_method'        
       end
     end
+    
+    it "should work with 'initialize' defined later" do
+      @instance.instance_variable_defined?(:@initialize_called).should be_true
+    end
   end
   
   describe "for class methods" do

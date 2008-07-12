@@ -7,6 +7,7 @@ module Methodical
     def methodize(*method_names)
       @_methodical_adding_methods = true
       for method_name in method_names
+        next if method_name.to_sym == :initialize
         class_eval %{
           alias_method 'methodical:#{method_name}', '#{method_name}'
           def #{method_name}
